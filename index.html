@@ -17,7 +17,6 @@
   }
   *{box-sizing:border-box}
   
-  /* Background Utama Biru Aesthetic */
   html,body{
     height:100%;
     margin:0;
@@ -45,7 +44,6 @@
     border: 1px solid rgba(255,255,255,0.5);
   }
   
-  /* HIGHLIGHT VIEW */
   .highlight-wrapper {
     width: 100%;
     overflow: hidden;
@@ -58,9 +56,8 @@
   }
   .highlight-track {
     display: flex;
-    /* Lebar disesuaikan dengan jumlah foto yang dikurangi (8 foto x 2 untuk loop = 16) */
     width: calc(250px * 16); 
-    animation: scrollHighlight 36s linear infinite; /* Kecepatan disesuaikan */
+    animation: scrollHighlight 36s linear infinite;
   }
   .highlight-item {
     width: 250px;
@@ -78,19 +75,16 @@
 
   @keyframes scrollHighlight {
     0% { transform: translateX(0); }
-    /* Geser sejauh setengah lebar track (8 foto) */
     100% { transform: translateX(calc(-250px * 8)); } 
   }
 
   .highlight-track:hover { animation-play-state: paused; }
 
-  /* Layout */
   .header{display:flex;align-items:center;gap:14px; margin-bottom: 20px;}
   .logo{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,var(--blue-deep),var(--blue-gradient));display:grid;place-items:center;font-weight:900;color:#051424;font-size:22px;box-shadow: 0 4px 12px rgba(160,196,255,0.4)}
   main{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:16px}
   .card{background:var(--card);padding:24px;border-radius:16px;box-shadow:0 6px 20px rgba(100,150,200,0.06)}
   
-  /* Styling Teks Panjang */
   .hero h2{font-family:'Brush Script MT',cursive;font-size:45px;color:var(--text-dark);margin-bottom:20px}
   .long-text {
     text-align: justify;
@@ -100,14 +94,12 @@
   }
   .long-text p { margin-bottom: 18px; }
 
-  /* Transisi Foto Utama */
   #mainPhoto {
     transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
     background-size: cover;
     background-position: center;
     height: 380px;
     border-radius: 16px;
-    /* Foto default menggunakan foto pertama yang tersisa */
     background-image: url('https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg');
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
   }
@@ -120,11 +112,8 @@
   .btn{background:linear-gradient(90deg,var(--blue-deep),var(--blue-gradient));border:none;padding:12px 18px;border-radius:12px;cursor:pointer;font-weight:700;color:#051424; transition: 0.3s; box-shadow: 0 4px 10px rgba(160,196,255,0.3);}
   .btn:hover { filter: brightness(1.05); transform: translateY(-2px); }
 
-  /* Animations */
   .scroll-anim { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
   .scroll-anim.is-visible { opacity: 1; transform: translateY(0); }
-  .fade-only { opacity: 0; transition: opacity 1.2s ease-in; }
-  .fade-only.is-visible { opacity: 1; }
 
   @media(max-width:920px){main{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(5,1fr)}}
 </style>
@@ -145,7 +134,15 @@
 
   <div class="highlight-wrapper scroll-anim">
     <div class="highlight-track">
-      <div class="highlight-item"><img src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/dsNgndSz/IMG-20241108-WA0047-1.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/tpWd5SMJ/IMG-20260406-WA0008.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/Py9Rw8h/IMG-20260406-WA0007.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/Z1dHPqYP/IMG-20250424-WA0018.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/Zpgr6bkZ/IMG-20260406-WA0004.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/zVW7N9JD/IMG-20260406-WA0010.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/jv2mmCYH/IMG-20260406-WA0000.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg"></div>
+      <div class="highlight-item"><img src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg"></div>
+      <div class="highlight-item"><img src="https://i.ibb.co/dsNgndSz/IMG-20241108-WA0047-1.jpg"></div>
+      <div class="highlight-item"><img src="https://i.ibb.co/tpWd5SMJ/IMG-20260406-WA0008.jpg"></div>
+      <div class="highlight-item"><img src="https://i.ibb.co/Py9Rw8h/IMG-20260406-WA0007.jpg"></div>
+      <div class="highlight-item"><img src="https://i.ibb.co/Z1dHPqYP/IMG-20250424-WA0018.jpg"></div>
+      <div class="highlight-item"><img src="https://i.ibb.co/Zpgr6bkZ/IMG-20260406-WA0004.jpg"></div>
+      <div class="highlight-item"><img src="https://i.ibb.co/zVW7N9JD/IMG-20260406-WA0010.jpg"></div>
+      <div class="highlight-item"><img src="https://i.ibb.co/jv2mmCYH/IMG-20260406-WA0000.jpg"></div>
+      <div class="highlight-item"><img src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg"></div>
       <div class="highlight-item"><img src="https://i.ibb.co/dsNgndSz/IMG-20241108-WA0047-1.jpg"></div>
       <div class="highlight-item"><img src="https://i.ibb.co/tpWd5SMJ/IMG-20260406-WA0008.jpg"></div>
       <div class="highlight-item"><img src="https://i.ibb.co/Py9Rw8h/IMG-20260406-WA0007.jpg"></div>
@@ -160,17 +157,31 @@
     <section class="card hero scroll-anim">
       <h2>Happy Birthday!</h2>
       <div class="long-text">
-        <p>Haii! It's been 4 months yaaa, ga kerasa suer HAHAHAHAH. Selamat ultah ya yang ke-18. Sorry tahun lalu aku ga buat kaya gini,sebenernya mau ngasi web ini pas hadiah dah ku kasih,rupanya masi lama,ah kelamaan gua nunggu. To be honest, ini aku udah mulai buat semenjak Oktober, tepat banget sebelum kita putusss. Rupanya putus karena ego masing-masing, dari dulu gitu mulu yak, buset.</p>
+        <p>Haii! It's been 1 year yaaa, ga kerasa suer HAHAHAHAH. Selamat ultah ya yang ke-18. To be honest, ini aku udah mulai buat semenjak Oktober, tepat banget sebelum kita putusss. Rupanya putus karena ego masing-masing, dari dulu gitu mulu yak, buset.</p>
+        
         <p>Oh iya, makasih ya (makasi mulu) atas semua experience yang udah kamu kasih ke aku. Semua sakit yang kamu kasih, semua sayang yang kamu beri (kecuali reassurance, hehe sorry), dan semua hadiah yang kamu beri, xixixi.</p>
+        
         <p>Kamu inget ga sih pas awal Maret kita ketemuan di FC tu? Yang kamu pengen ketemu sekalian balikin hoodie-ku? Besoknya aku gila loh wkwkwk. Keluargaku lagi asik bos, terus temen pada wah... Aku sempet chat kamu malem-malem jam 9, masi inget banget, tapi kamunya mungkin sibuk jadi chatku dijawab entah apa HAHAHAHAHA.</p>
+        
         <p>Jujur hatiku sakit banget Ca, kaya <i>I need you the most at that time</i> tapi keren juga aku dicuekin. Kayak aku emang sih pernah cuekin kamu, tapi emang aku pernah ya cuekin kamu disaat orang-orang ngejauhin kamu? <i>Didn't you remember I was the one who stayed all along</i> disaat keluarga kamu dan temen kamu lagi pada jauh sama kamu? Dan ketika temen kamu balik lagi, aku ditinggal-tinggal gitu aja. Saat kamu main, behhh, 3-4 jam baru dibales. Keinget loh sakitku, padahal aku kalo main ga pernah slowres.</p>
+        
         <p>Kamu paham ga sih kenapa kita putus? Kamu mungkin mikir aku putusin kamu karena kondisi keluarga atau karena kakak kamu. Sumpah itu bener-bener ga masalah buat aku. Dan kamu mikir bahwa <i>cuddling</i> salah satu faktor aku ga pergi, <i>and that's not the thing</i>. Ini karena ego kamu sendiri.</p>
+        
         <p>Kamu sadar ga sih, setiap aku nasehatin kamu sempat bilang "kok kamu malah mojokin aku sih?" Padahal kamu sendiri yang bilang kalau ada salah, kita bicarain & komunikasiin baik-baik. Tapi okelah ya, aku udah capek dan nahan sakit hati mulu. Dan akhir-akhir ini aku denger bahwa aku JAHAT banget di cerita kamu. Kali ini aku ga bela diriku sendiri kok, kaya yaudah makasih udah cap aku sebagai orang jahat di ceritamu.</p>
-        <p>Kamu ga lihat sabarku, kamu ga lihat ego turunku, kamu ga lihat effort-ku,kaya pas aku ujan" an demi nemuin hp kamu,masi inget ga? Kalo masih Alhamdulillah.Yang kamu lihat mungkin cuma pas aku ngatain kamu sok imut, bhkan aku ngatain kamu gitu karena ada alasan tersendiri,aku tetep akuin kok aku salah,banget bahkan,BANGETT(ini ga sarkas). Aku juga banyak bohong karena ada alasan sendiri. Aku emang salah kok, pure banget salahnya. Aku masih belom punya pendirian sehingga aku ngejek pasanganku sendiri, aku paham aku salah.</p>
+        
+        <p>Kamu ga lihat sabarku, kamu ga lihat ego turunku, kamu ga lihat effort-ku. Yang kamu lihat kan cuma pas aku ngatain kamu sok imut, iyakan? Bahkan aku ngatain kamu gitu karena ada alasan tersendiri. Aku juga banyak bohong karena ada alasan sendiri. Aku emang salah kok, pure banget salahnya. Aku masih belom punya pendirian sehingga aku ngejek pasanganku sendiri, aku paham aku salah.</p>
+        
         <p>Although, dengan semua yang terjadi di hubungan kita, aku cuma heran. Setiap hari aku nanya, aku ini siapa sih bagi kamu? Apa aku berharga? Sekarang aku ga mempersalahin dipost atau ngganya, tapi aku selalu ngerasa bahwa aku tuh ga pacaran tapi pacaran. Aku juga gamon karena berharap bahwa kamu bakal berubah buat aku <i>like I did to you</i>, rupanya ngga HAHAHAHA. But it's okay, emang gaboleh kok berubahnya diri sendiri demi orang lain kek aku.</p>
+
+        <p><b>MAAF YAA AKU MALAH CURHAT GINI</b>, ini hal yang udah kupendemmm dari pertengahan hubungan sampe di saat ini, sorry banget gua ngeluh wkwkwkw, akhirnya lo bisa denger derita gua sesekali, dari sini mungkin kita masing-masing bisa introspeksi diri, yakan ca?</p>
+
+        <p>Minta maaf ya sekali lagi aku ngeluh-ngeluh, gaenak bet bjir wkwkwk, kalo kamu beneran baca semua ini, baguslah, jari gua capek buset, wishlist gua padahal ajak si ade veri main badminton, udah top global ni gue buset.</p>
+        
         <p>Intinya makasih ya atas semua senang & sakit yang kamu beri ke akuu. It's a normal thing sih kalo setiap hubungan nyakitin, gada yang ga nyakitin wkwkwkw. Aku cuma pengen minta maaf aja kalo aku ini jahat, suka boong, friendly, mokondo, jelek.</p>
+        
         <p>And then I knew that I deserved someone better. I used to think that someone was you, but now, it's still though hahahaha. Maybe in another 2 month I will change my mind, and you.</p>
-        <p>You deserve someone better.(someone nya gua hahay,liat nanti pas kuliah kita kasi understand)</p>
+        
+        <p>You deserve someone better.</p>
         
         <p style="text-align: right; font-weight: bold; margin-top: 20px; color: var(--blue-deep);">~bimo</p>
       </div>
@@ -179,16 +190,15 @@
     <aside class="card side scroll-anim">
       <div id="mainPhoto"></div>
       <div style="margin-top:15px">
-        <div class="small" style="margin-bottom: 10px; font-weight: 600; color: var(--muted);">Album Kenangan:</div>
         <div class="gallery" id="gallery">
-          <img class="fade-only" src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg" />
-          <img class="fade-only" src="https://i.ibb.co/dsNgndSz/IMG-20241108-WA0047-1.jpg" />
-          <img class="fade-only" src="https://i.ibb.co/tpWd5SMJ/IMG-20260406-WA0008.jpg" />
-          <img class="fade-only" src="https://i.ibb.co/Py9Rw8h/IMG-20260406-WA0007.jpg" />
-          <img class="fade-only" src="https://i.ibb.co/Z1dHPqYP/IMG-20250424-WA0018.jpg" />
-          <img class="fade-only" src="https://i.ibb.co/Zpgr6bkZ/IMG-20260406-WA0004.jpg" />
-          <img class="fade-only" src="https://i.ibb.co/zVW7N9JD/IMG-20260406-WA0010.jpg" />
-          <img class="fade-only" src="https://i.ibb.co/jv2mmCYH/IMG-20260406-WA0000.jpg" />
+          <img src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg" />
+          <img src="https://i.ibb.co/dsNgndSz/IMG-20241108-WA0047-1.jpg" />
+          <img src="https://i.ibb.co/tpWd5SMJ/IMG-20260406-WA0008.jpg" />
+          <img src="https://i.ibb.co/Py9Rw8h/IMG-20260406-WA0007.jpg" />
+          <img src="https://i.ibb.co/Z1dHPqYP/IMG-20250424-WA0018.jpg" />
+          <img src="https://i.ibb.co/Zpgr6bkZ/IMG-20260404-WA0004.jpg" />
+          <img src="https://i.ibb.co/zVW7N9JD/IMG-20260406-WA0010.jpg" />
+          <img src="https://i.ibb.co/jv2mmCYH/IMG-20260406-WA0000.jpg" />
         </div>
       </div>
     </aside>
@@ -204,7 +214,7 @@ const observer = new IntersectionObserver((entries) => {
     else entry.target.classList.remove('is-visible');
   });
 }, { threshold: 0.1 });
-document.querySelectorAll('.scroll-anim, .fade-only').forEach(el => observer.observe(el));
+document.querySelectorAll('.scroll-anim').forEach(el => observer.observe(el));
 
 document.getElementById('gallery').addEventListener('click', e => {
   if (e.target.tagName !== 'IMG') return;
@@ -223,7 +233,7 @@ bgm.volume = 0.6;
 playBtn.addEventListener('click', ()=>{
   if(bgm.paused){ 
     bgm.play().catch(e => {
-        alert("Lagu belum terdeteksi. Pastikan file 'seasons.mp3' sudah kamu upload ke GitHub di folder yang sama.");
+        alert("Klik tombol sekali lagi untuk memutar musik.");
     }); 
     playBtn.textContent='⏸ Stop Musik'; 
   } else { 
