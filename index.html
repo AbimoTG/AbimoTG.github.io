@@ -17,6 +17,7 @@
   }
   *{box-sizing:border-box}
   
+  /* Background Utama Biru Aesthetic */
   html,body{
     height:100%;
     margin:0;
@@ -26,6 +27,11 @@
     background-attachment: fixed;
   }
   
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
   .container{
     max-width:980px;
     margin:18px auto;
@@ -39,38 +45,86 @@
     border: 1px solid rgba(255,255,255,0.5);
   }
   
+  /* HIGHLIGHT VIEW */
   .highlight-wrapper {
-    width: 100%; overflow: hidden; background: rgba(255,255,255,0.5);
-    border-radius: 16px; margin-top: 20px; height: 250px; border: 1px solid var(--blue-gradient);
+    width: 100%;
+    overflow: hidden;
+    background: rgba(255,255,255,0.5);
+    border-radius: 16px;
+    margin-top: 20px;
+    position: relative;
+    height: 250px;
+    border: 1px solid var(--blue-gradient);
   }
-  .highlight-track { display: flex; width: calc(250px * 20); animation: scrollHighlight 45s linear infinite; }
-  .highlight-item { width: 250px; height: 250px; flex-shrink: 0; padding: 8px; }
-  .highlight-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+  .highlight-track {
+    display: flex;
+    /* Lebar disesuaikan dengan jumlah foto yang dikurangi (8 foto x 2 untuk loop = 16) */
+    width: calc(250px * 16); 
+    animation: scrollHighlight 36s linear infinite; /* Kecepatan disesuaikan */
+  }
+  .highlight-item {
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0;
+    padding: 8px;
+  }
+  .highlight-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
 
-  @keyframes scrollHighlight { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 10)); } }
+  @keyframes scrollHighlight {
+    0% { transform: translateX(0); }
+    /* Geser sejauh setengah lebar track (8 foto) */
+    100% { transform: translateX(calc(-250px * 8)); } 
+  }
 
+  .highlight-track:hover { animation-play-state: paused; }
+
+  /* Layout */
   .header{display:flex;align-items:center;gap:14px; margin-bottom: 20px;}
-  .logo{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,var(--blue-deep),var(--blue-gradient));display:grid;place-items:center;font-weight:900;color:#051424;font-size:22px;}
+  .logo{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,var(--blue-deep),var(--blue-gradient));display:grid;place-items:center;font-weight:900;color:#051424;font-size:22px;box-shadow: 0 4px 12px rgba(160,196,255,0.4)}
   main{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:16px}
   .card{background:var(--card);padding:24px;border-radius:16px;box-shadow:0 6px 20px rgba(100,150,200,0.06)}
   
+  /* Styling Teks Panjang */
   .hero h2{font-family:'Brush Script MT',cursive;font-size:45px;color:var(--text-dark);margin-bottom:20px}
-  .long-text { text-align: justify; line-height: 1.8; color: #334455; font-size: 15px; }
+  .long-text {
+    text-align: justify;
+    line-height: 1.8;
+    color: #334455;
+    font-size: 15px;
+  }
   .long-text p { margin-bottom: 18px; }
 
+  /* Transisi Foto Utama */
   #mainPhoto {
-    background-size: cover; background-position: center; height: 380px; border-radius: 16px;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    height: 380px;
+    border-radius: 16px;
+    /* Foto default menggunakan foto pertama yang tersisa */
     background-image: url('https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg');
-    transition: 0.4s;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
   }
+  .photo-fade { opacity: 0; transform: scale(0.98); }
 
   .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}
-  .gallery img{width:100%;height:75px;object-fit:cover;border-radius:10px;cursor:pointer;}
+  .gallery img{width:100%;height:75px;object-fit:cover;border-radius:10px;cursor:pointer; transition: 0.3s;}
+  .gallery img:hover { transform: scale(1.1); z-index: 10; }
 
-  .btn{background:linear-gradient(90deg,var(--blue-deep),var(--blue-gradient));border:none;padding:12px 18px;border-radius:12px;cursor:pointer;font-weight:700;color:#051424;}
+  .btn{background:linear-gradient(90deg,var(--blue-deep),var(--blue-gradient));border:none;padding:12px 18px;border-radius:12px;cursor:pointer;font-weight:700;color:#051424; transition: 0.3s; box-shadow: 0 4px 10px rgba(160,196,255,0.3);}
+  .btn:hover { filter: brightness(1.05); transform: translateY(-2px); }
 
+  /* Animations */
   .scroll-anim { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
   .scroll-anim.is-visible { opacity: 1; transform: translateY(0); }
+  .fade-only { opacity: 0; transition: opacity 1.2s ease-in; }
+  .fade-only.is-visible { opacity: 1; }
 
   @media(max-width:920px){main{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(5,1fr)}}
 </style>
@@ -84,32 +138,20 @@
       <h1 style="font-size: 20px; margin: 0;">HBD ke-18 Annisa Syahira Vernanda</h1>
       <p style="margin: 5px 0 0; color: var(--muted); font-size: 14px;">Momen dan pesan untukmu</p>
     </div>
-    <div style="margin-left:auto;">
+    <div style="margin-left:auto;display:flex;gap:10px">
       <button id="playBtn" class="btn">▶ Putar Musik</button>
     </div>
   </div>
 
   <div class="highlight-wrapper scroll-anim">
     <div class="highlight-track">
-      <div class="highlight-item"><img src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg"></div>
+      <div class="highlight-item"><img src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/dsNgndSz/IMG-20241108-WA0047-1.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/tpWd5SMJ/IMG-20260406-WA0008.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/Py9Rw8h/IMG-20260406-WA0007.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/Z1dHPqYP/IMG-20250424-WA0018.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/Zpgr6bkZ/IMG-20260406-WA0004.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/zVW7N9JD/IMG-20260406-WA0010.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/jv2mmCYH/IMG-20260406-WA0000.jpg"></div> <div class="highlight-item"><img src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg"></div>
       <div class="highlight-item"><img src="https://i.ibb.co/dsNgndSz/IMG-20241108-WA0047-1.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/b5d8Y41J/IMG-20260406-WA0011.jpg"></div>
       <div class="highlight-item"><img src="https://i.ibb.co/tpWd5SMJ/IMG-20260406-WA0008.jpg"></div>
       <div class="highlight-item"><img src="https://i.ibb.co/Py9Rw8h/IMG-20260406-WA0007.jpg"></div>
       <div class="highlight-item"><img src="https://i.ibb.co/Z1dHPqYP/IMG-20250424-WA0018.jpg"></div>
       <div class="highlight-item"><img src="https://i.ibb.co/Zpgr6bkZ/IMG-20260406-WA0004.jpg"></div>
       <div class="highlight-item"><img src="https://i.ibb.co/zVW7N9JD/IMG-20260406-WA0010.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/Kx2zQLnZ/IMG-20260406-WA0009.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/jv2mmCYH/IMG-20260406-WA0000.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/dsNgndSz/IMG-20241108-WA0047-1.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/b5d8Y41J/IMG-20260406-WA0011.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/tpWd5SMJ/IMG-20260406-WA0008.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/Py9Rw8h/IMG-20260406-WA0007.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/Z1dHPqYP/IMG-20250424-WA0018.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/Zpgr6bkZ/IMG-20260406-WA0004.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/zVW7N9JD/IMG-20260406-WA0010.jpg"></div>
-      <div class="highlight-item"><img src="https://i.ibb.co/Kx2zQLnZ/IMG-20260406-WA0009.jpg"></div>
       <div class="highlight-item"><img src="https://i.ibb.co/jv2mmCYH/IMG-20260406-WA0000.jpg"></div>
     </div>
   </div>
@@ -129,6 +171,9 @@
         <p>Intinya makasih ya atas semua senang & sakit yang kamu beri ke akuu. It's a normal thing sih kalo setiap hubungan nyakitin, gada yang ga nyakitin wkwkwkw. Aku cuma pengen minta maaf aja kalo aku ini jahat, suka boong, friendly, mokondo, jelek.</p>
         <p>And then I knew that I deserved someone better. I used to think that someone was you, but now, it's still though hahahaha. Maybe in another 2 month I will change my mind, and you.</p>
         <p>You deserve someone better.(someone nya gua hahay,liat nanti pas kuliah kita kasi understand)</p>
+        
+        <p style="text-align: right; font-weight: bold; margin-top: 20px; color: var(--blue-deep);">~bimo</p>
+      </div>
         <p style="text-align: right; font-weight: bold; margin-top: 20px; color: var(--blue-deep);">~bimo</p>
       </div>
     </section>
@@ -136,57 +181,56 @@
     <aside class="card side scroll-anim">
       <div id="mainPhoto"></div>
       <div style="margin-top:15px">
+        <div class="small" style="margin-bottom: 10px; font-weight: 600; color: var(--muted);">Album Kenangan:</div>
         <div class="gallery" id="gallery">
-          <img src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg" />
-          <img src="https://i.ibb.co/dsNgndSz/IMG-20241108-WA0047-1.jpg" />
-          <img src="https://i.ibb.co/b5d8Y41J/IMG-20260406-WA0011.jpg" />
-          <img src="https://i.ibb.co/tpWd5SMJ/IMG-20260406-WA0008.jpg" />
-          <img src="https://i.ibb.co/Py9Rw8h/IMG-20260406-WA0007.jpg" />
-          <img src="https://i.ibb.co/Z1dHPqYP/IMG-20250424-WA0018.jpg" />
-          <img src="https://i.ibb.co/Zpgr6bkZ/IMG-20260406-WA0004.jpg" />
-          <img src="https://i.ibb.co/zVW7N9JD/IMG-20260406-WA0010.jpg" />
-          <img src="https://i.ibb.co/Kx2zQLnZ/IMG-20260406-WA0009.jpg" />
-          <img src="https://i.ibb.co/jv2mmCYH/IMG-20260406-WA0000.jpg" />
+          <img class="fade-only" src="https://i.ibb.co/CsWVNwFj/IMG-20250223-WA0011-1.jpg" />
+          <img class="fade-only" src="https://i.ibb.co/dsNgndSz/IMG-20241108-WA0047-1.jpg" />
+          <img class="fade-only" src="https://i.ibb.co/tpWd5SMJ/IMG-20260406-WA0008.jpg" />
+          <img class="fade-only" src="https://i.ibb.co/Py9Rw8h/IMG-20260406-WA0007.jpg" />
+          <img class="fade-only" src="https://i.ibb.co/Z1dHPqYP/IMG-20250424-WA0018.jpg" />
+          <img class="fade-only" src="https://i.ibb.co/Zpgr6bkZ/IMG-20260406-WA0004.jpg" />
+          <img class="fade-only" src="https://i.ibb.co/zVW7N9JD/IMG-20260406-WA0010.jpg" />
+          <img class="fade-only" src="https://i.ibb.co/jv2mmCYH/IMG-20260406-WA0000.jpg" />
         </div>
       </div>
     </aside>
   </main>
 </div>
 
-<audio id="bgm" loop preload="auto">
-  <source src="seasons.mp3?v=1" type="audio/mpeg">
-</audio>
+<audio id="bgm" src="seasons.mp3" loop></audio>
 
 <script>
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('is-visible');
+    else entry.target.classList.remove('is-visible');
   });
 }, { threshold: 0.1 });
-document.querySelectorAll('.scroll-anim').forEach(el => observer.observe(el));
+document.querySelectorAll('.scroll-anim, .fade-only').forEach(el => observer.observe(el));
 
 document.getElementById('gallery').addEventListener('click', e => {
   if (e.target.tagName !== 'IMG') return;
-  document.getElementById('mainPhoto').style.backgroundImage = `url("${e.target.src}")`;
+  const mainPhoto = document.getElementById('mainPhoto');
+  mainPhoto.classList.add('photo-fade');
+  setTimeout(() => {
+    mainPhoto.style.backgroundImage = `url("${e.target.src}")`;
+    mainPhoto.classList.remove('photo-fade');
+  }, 400);
 });
 
-// KODE MUSIK ANTI-MACET
 const bgm = document.getElementById('bgm');
 const playBtn = document.getElementById('playBtn');
+bgm.volume = 0.6;
 
-playBtn.addEventListener('click', function() {
-  if (bgm.paused) {
-    // Memaksa reload audio agar mengambil yang terbaru
-    if (bgm.readyState === 0) bgm.load(); 
-    
-    bgm.play().then(() => {
-      playBtn.textContent = '⏸ Stop Musik';
-    }).catch(err => {
-      alert("Klik OK lalu coba klik lagi tombol Putar Musiknya. Pastikan Volume HP aktif.");
-    });
-  } else {
-    bgm.pause();
-    playBtn.textContent = '▶ Putar Musik';
+playBtn.addEventListener('click', ()=>{
+  if(bgm.paused){ 
+    bgm.play().catch(e => {
+        alert("Lagu belum terdeteksi. Pastikan file 'seasons.mp3' sudah kamu upload ke GitHub di folder yang sama.");
+    }); 
+    playBtn.textContent='⏸ Stop Musik'; 
+  } else { 
+    bgm.pause(); 
+    playBtn.textContent='▶ Putar Musik'; 
   }
 });
 </script>
